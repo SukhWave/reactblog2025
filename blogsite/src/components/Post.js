@@ -30,7 +30,16 @@ const Post = () => {
 
     return (
         <div className="container my-4">
-            <h1 className="mn-4">{post.title}</h1>
+            <h1 className="mb-4">{post.title}</h1>
+            <p>{post.content}</p>
+            <hr />
+            <div className="d-flex justify-content-center">
+                <div>
+                    <small className="text-muted">
+                        Posted by {post.author} on {post.date}
+                    </small>
+                </div>
+            </div>
         </div>
     );
 };
