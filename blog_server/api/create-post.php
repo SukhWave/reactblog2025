@@ -27,8 +27,8 @@ $content = filter_var($_POST['content'], FILTER_SANITIZE_STRING);
 $author = filter_var($_POST['author'], FILTER_SANITIZE_STRING);
 
 // Handle image upload if exists
-$imageName = null;
 $uploadDir = __DIR__ . "/uploads/";
+$imageName = "placeholder_100.jpg"; // default
 
 if (!empty($_FILES['image']['name'])) {
     $originalName = basename($_FILES['image']['name']);
@@ -50,7 +50,7 @@ if (!empty($_FILES['image']['name'])) {
         exit();
     }
 
-    $imageName = $originalName;
+    $imageName = $originalName; // overwrite default with uploaded file name
 }
 
 // Insert into database
