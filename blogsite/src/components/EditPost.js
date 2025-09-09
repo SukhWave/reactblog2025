@@ -151,25 +151,38 @@ const EditPost = () => {
           </div>
         </div>
  
-        {/* Submit Button */}
-        <div className="text-end">
-          <button type="submit" className="btn btn-dark" disabled={isLoading}>
-            {isLoading ? (
-              <span>
-                <span
-                  className="spinner-border spinner-border-sm me-2"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                Saving changes...
-              </span>
-            ) : (
-              "Save Changes"
-            )}
-          </button>
-        </div>
-      </form>
+
+    {/* Submit and Cancel Buttons */}
+    <div className="text-end">
+      <button 
+        type="submit" 
+        className="btn btn-dark me-2" 
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <span>
+            <span
+              className="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            Saving changes...
+          </span>
+        ) : (
+          "Save Changes"
+        )}
+      </button>
+
+      <button 
+        type="button" 
+        className="btn btn-secondary"
+        onClick={() => navigate('/')}
+      >
+        Cancel
+      </button>
     </div>
+  </form>
+</div>
   );
 };
  

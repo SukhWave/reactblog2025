@@ -22,6 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
+// Require authentication
+if (!isset($_SESSION['user'])) {
+    http_response_code(401);
+    echo json_encode(["success" => false, "message" => "Unauthorized"]);
+    exit();
+}
+
+// Only allow admin
+if ($_SESSION['user']['role'] !== 'admin') {
+    http_response_code(403);
+    echo json_encode(["success" => false, "message" => "Forbidden: Admins only"]);
+    exit();
+}
+
 // Validate POST data
 if (!isset($_POST['id'], $_POST['title'], $_POST['content'], $_POST['author'])) {
     http_response_code(400);
